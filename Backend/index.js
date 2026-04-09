@@ -8,8 +8,7 @@ const bcrypt = require("bcrypt");
 
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
-const OrdersModel = require("./model/OrdersModel");
-
+const UserModel = require("./model/UserModel");
 const PORT = process.env.PORT || 3002;
 const MONGO_URI = process.env.MONGO_URL;
 
@@ -17,6 +16,11 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
+
+
+app.get("/", (req, res) => {
+  res.send("Server chal raha hai 🚀");
+});
 
 // ------------------- AUTH ROUTES -------------------
 app.post("/signup", async (req, res) => {

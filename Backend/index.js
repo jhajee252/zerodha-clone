@@ -9,7 +9,6 @@ const bcrypt = require("bcrypt");
 // ✅ Models import
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
-const UserModel = require("./model/UserModel");
 const OrdersModel = require("./model/OrdersModel"); // 🔥 FIXED
 
 const PORT = process.env.PORT || 3002;

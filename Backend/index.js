@@ -6,18 +6,22 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 
+// ✅ Models import
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
 const UserModel = require("./model/UserModel");
+const OrdersModel = require("./model/OrdersModel"); // 🔥 FIXED
+
 const PORT = process.env.PORT || 3002;
 const MONGO_URI = process.env.MONGO_URL;
 
 const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(bodyParser.json());
 
-
+// ------------------- TEST ROUTE -------------------
 app.get("/", (req, res) => {
   res.send("Server chal raha hai 🚀");
 });
@@ -26,11 +30,19 @@ app.get("/", (req, res) => {
 app.post("/signup", async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const existingUser = await UserModel.findOne({ email });
-    if (existingUser) return res.json({ success: false, message: "User already exists" });
+    if (existingUser) {
+      return res.json({ success: false, message: "User already exists" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new UserModel({ email, password: hashedPassword });
+
+    const newUser = new UserModel({
+      email,
+      password: hashedPassword,
+    });
+
     await newUser.save();
 
     res.json({ success: true, message: "Signup successful" });
@@ -43,11 +55,16 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const user = await UserModel.findOne({ email });
-    if (!user) return res.json({ success: false, message: "User not found" });
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.json({ success: false, message: "Wrong password" });
+    if (!isMatch) {
+      return res.json({ success: false, message: "Wrong password" });
+    }
 
     res.json({ success: true, message: "Login successful" });
   } catch (err) {
@@ -56,22 +73,22 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// ------------------- HOLDINGS & POSITIONS -------------------
-// JWT middleware hata diya — ab bina login ke direct access milega
+// ------------------- HOLDINGS -------------------
 app.get("/allHoldings", async (req, res) => {
   try {
-    const allHoldings = await HoldingsModel.find({});
-    res.json(allHoldings);
+    const data = await HoldingsModel.find({});
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).send("Server error");
   }
 });
 
+// ------------------- POSITIONS -------------------
 app.get("/allPositions", async (req, res) => {
   try {
-    const allPositions = await PositionsModel.find({});
-    res.json(allPositions);
+    const data = await PositionsModel.find({});
+    res.json(data);
   } catch (err) {
     console.log(err);
     res.status(500).send("Server error");
@@ -91,7 +108,8 @@ app.post("/newOrder", async (req, res) => {
     if (mode === "BUY") {
       if (existingHolding) {
         const totalQty = existingHolding.qty + qty;
-        const totalInvestment = existingHolding.avg * existingHolding.qty + price * qty;
+        const totalInvestment =
+          existingHolding.avg * existingHolding.qty + price * qty;
 
         existingHolding.qty = totalQty;
         existingHolding.avg = totalInvestment / totalQty;
@@ -107,6 +125,7 @@ app.post("/newOrder", async (req, res) => {
           net: "0%",
           day: "0%",
         });
+
         await newHolding.save();
       }
     }
@@ -133,10 +152,15 @@ app.post("/newOrder", async (req, res) => {
 });
 
 // ------------------- CONNECT DB & START SERVER -------------------
-mongoose.connect(MONGO_URI)
-  .then(() => console.log("MongoDB connected ✅"))
-  .catch((err) => console.log("MongoDB connection error:", err));
+mongoose
+  .connect(MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected ✅");
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("MongoDB connection error ❌", err);
+  });

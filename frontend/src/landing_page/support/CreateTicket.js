@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function CreateTicket() {
     return ( 
@@ -6,80 +7,84 @@ function CreateTicket() {
         <div className='row p-5 mt-5 mb-5'>
             <h1>To create a ticket, select a relevant topic</h1>
 
+            {/* Account Opening */}
             <div className='col-4 p-5 mt-2 mb-2'>
                 <h4 className='fs-6'>
-                    <i className="fa fa-plus" aria-hidden="true"></i> Account Opening
+                    <i className="fa fa-plus"></i> Account Opening
                 </h4>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Online Account Opening</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Offline Account Opening</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Company, Partnership and HUF Account Opening</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>NRI Account Opening</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Charges at Zerodha</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Zerodha IDFC FIRST Bank 3-in-1 Account</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Getting Started</a>
+
+                <Link to="/online-account" className="text-decoration-none d-block">Online Account Opening</Link>
+                <Link to="/offline-account" className="text-decoration-none d-block">Offline Account Opening</Link>
+                <Link to="/huf-account" className="text-decoration-none d-block">Company, Partnership and HUF Account Opening</Link>
+                <Link to="/nri-account" className="text-decoration-none d-block">NRI Account Opening</Link>
+                <Link to="/charges" className="text-decoration-none d-block">Charges at Zerodha</Link>
+                <Link to="/idfc-account" className="text-decoration-none d-block">Zerodha IDFC FIRST Bank 3-in-1 Account</Link>
+                <Link to="/getting-started" className="text-decoration-none d-block">Getting Started</Link>
             </div>
 
+            {/* Account */}
             <div className='col-4 p-5 mt-2 mb-2'>
                 <h4 className='fs-6'>
-                    <i className="fa fa-user" aria-hidden="true"></i> Your Zerodha Account
+                    <i className="fa fa-user"></i> Your Zerodha Account
                 </h4>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Login Credentials</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Account Modification and Segment Addition</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>DP ID bank details</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Your Profile</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Transfer and conversion of shares</a>
+
+                <Link to="/login" className="text-decoration-none d-block">Login Credentials</Link>
+                <Link to="/account-modification" className="text-decoration-none d-block">Account Modification and Segment Addition</Link>
+                <Link to="/dp-details" className="text-decoration-none d-block">DP ID bank details</Link>
+                <Link to="/profile" className="text-decoration-none d-block">Your Profile</Link>
+                <Link to="/transfer-shares" className="text-decoration-none d-block">Transfer and conversion of shares</Link>
             </div>
 
+            {/* Trading */}
             <div className='col-4 p-5 mt-2 mb-2'>
                 <h4 className='fs-6'>
-                    <i className="fa fa-bar-chart" aria-hidden="true"></i> Trading
+                    <i className="fa fa-bar-chart"></i> Trading
                 </h4>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Margin/leverage, Product and Order types</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Kite Web and Mobile</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Trading FAQs</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Corporate Actions</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Sentinel</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Kite API</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Pi and other platforms</a>
+
+                <Link to="/margin" className="text-decoration-none d-block">Margin/leverage, Product and Order types</Link>
+                <Link to="/kite" className="text-decoration-none d-block">Kite Web and Mobile</Link>
+                <Link to="/trading-faq" className="text-decoration-none d-block">Trading FAQs</Link>
+                <Link to="/corporate-actions" className="text-decoration-none d-block">Corporate Actions</Link>
+                <Link to="/sentinel" className="text-decoration-none d-block">Sentinel</Link>
+                <Link to="/kite-api" className="text-decoration-none d-block">Kite API</Link>
+                <Link to="/pi" className="text-decoration-none d-block">Pi and other platforms</Link>
             </div>
 
-            {/* Funds Section */}
+            {/* Funds */}
             <div className='col-4 p-5 mt-2 mb-2'>
                 <h4 className='fs-6'>
-                    <i className="fa fa-credit-card" aria-hidden="true"></i> Funds
+                    <i className="fa fa-credit-card"></i> Funds
                 </h4>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Adding Funds</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Funds Withdrawal</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>eMandates</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Adding Bank Account</a>
+
+                <Link to="/add-funds" className="text-decoration-none d-block">Adding Funds</Link>
+                <Link to="/withdraw" className="text-decoration-none d-block">Funds Withdrawal</Link>
+                <Link to="/emandates" className="text-decoration-none d-block">eMandates</Link>
+                <Link to="/bank-account" className="text-decoration-none d-block">Adding Bank Account</Link>
             </div>
 
-            {/* Console Section */}
+            {/* Console */}
             <div className='col-4 p-5 mt-2 mb-2'>
                 <h4 className='fs-6'>
-                    <i className="fa fa-circle-o-notch" aria-hidden="true"></i> Console
+                    <i className="fa fa-circle-o-notch"></i> Console
                 </h4>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Reports</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Leader</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Portfolio</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>60 Day Challenge</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>IPO</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Referral Program</a>
+
+                <Link to="/reports" className="text-decoration-none d-block">Reports</Link>
+                <Link to="/leader" className="text-decoration-none d-block">Leader</Link>
+                <Link to="/portfolio" className="text-decoration-none d-block">Portfolio</Link>
+                <Link to="/ipo" className="text-decoration-none d-block">IPO</Link>
+                <Link to="/referral" className="text-decoration-none d-block">Referral Program</Link>
             </div>
 
-            {/* Coin Section */}
+            {/* Coin */}
             <div className='col-4 p-5 mt-2 mb-2'>
                 <h4 className='fs-6'>
-                    <i className="fa fa-circle-o" aria-hidden="true"></i> Coin
+                    <i className="fa fa-circle-o"></i> Coin
                 </h4>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Understanding Mutual Funds</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>About Coin</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Buying and Selling through Coin</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Starting an SIP</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Managing your Portfolio</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Coin App</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Moving to Coin</a><br/>
-                <a href='#' style={{textDecoration: "none", lineHeight: "2.5"}}>Government Securities</a>
+
+                <Link to="/mutual-funds" className="text-decoration-none d-block">Understanding Mutual Funds</Link>
+                <Link to="/coin" className="text-decoration-none d-block">About Coin</Link>
+                <Link to="/sip" className="text-decoration-none d-block">Starting an SIP</Link>
+                <Link to="/government-securities" className="text-decoration-none d-block">Government Securities</Link>
             </div>
 
         </div>

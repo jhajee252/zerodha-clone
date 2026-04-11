@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3002/login", data);
+      const res = await axios.post("https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/", data);
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);

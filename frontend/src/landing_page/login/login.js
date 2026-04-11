@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/", data);
+      const res = await axios.post("https://zerodha-clone-2-nu25.onrender.com/login", data);
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);

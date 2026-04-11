@@ -18,7 +18,7 @@ function Login() {
         alert("Login successful ✅");
 
         // ✅ Navigate to dashboard instead of hard reload
-        navigate("/dashboard");
+        navigate("https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/");
       } else {
         alert(res.data.message || "Invalid credentials ❌");
       }

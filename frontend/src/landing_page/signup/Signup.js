@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Signup() {
 
@@ -18,13 +19,34 @@ function Signup() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(formData);
+   //   // 🔥 redirect + message
+  //   navigate("/", { state: { message: "Signup successful ✅" } });
+  // };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // 🔥 redirect + message
-    navigate("/", { state: { message: "Signup successful ✅" } });
-  };
+  try {
+    const res = await axios.post(
+      "https://zerodha-clone-2-nu25.onrender.com/signup",
+      formData
+    );
+
+    if (res.data.success) {
+      alert("Signup successful ✅");
+      navigate("/");
+    } else {
+      alert(res.data.message || "Signup failed ❌");
+    }
+  } catch (err) {
+    console.log(err);
+    alert("Server error ❌");
+  }
+};
+
+ 
 
   return (
     <div style={styles.container}>

@@ -5,28 +5,27 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [data, setData] = useState({ email: "", password: "" });
-  const navigate = useNavigate(); // 👈 React Router navigation hook
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await axios.post("https://zerodha-clone-2-nu25.onrender.com/login", data);
+  try {
+    const res = await axios.post("https://zerodha-clone-2-nu25.onrender.com/login", data);
 
-      if (res.data.success) {
-        localStorage.setItem("token", res.data.token);
-        alert("Login successful ✅");
+    if (res.data.success) {
+      localStorage.setItem("token", res.data.token);
+      alert("Login successful ✅");
 
-        // ✅ Navigate to dashboard instead of hard reload
-      window.location.href = "https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/";
-      } else {
-        alert(res.data.message || "Invalid credentials ❌");
-      }
-    } catch (err) {
-      console.log(err);
-      alert("Server error ❌");
+      window.location.href =
+        "https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/";
+    } else {
+      alert(res.data.message || "Invalid credentials ❌");
     }
-  };
+  } catch (err) {
+    console.log(err);
+    alert("Server error ❌");
+  }
+};
 
   return (
     <div style={styles.container}>

@@ -36,7 +36,7 @@ function Signup() {
 
     if (res.data.success) {
       alert("Signup successful ✅");
-      navigate("/");
+      navigate("/login");
     } else {
       alert(res.data.message || "Signup failed ❌");
     }
@@ -45,8 +45,6 @@ function Signup() {
     alert("Server error ❌");
   }
 };
-
- 
 
   return (
     <div style={styles.container}>

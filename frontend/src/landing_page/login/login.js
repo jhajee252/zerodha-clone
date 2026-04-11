@@ -13,11 +13,11 @@ const handleSubmit = async (e) => {
     const res = await axios.post("https://zerodha-clone-2-nu25.onrender.com/login", data);
 
     if (res.data.success) {
-      localStorage.setItem("token", res.data.token);
+      // localStorage.setItem("token", res.data.token);
+      window.location.href =
+  `https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/?token=${res.data.token}`;
       alert("Login successful ✅");
 
-      window.location.href =
-        "https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/";
     } else {
       alert(res.data.message || "Invalid credentials ❌");
     }

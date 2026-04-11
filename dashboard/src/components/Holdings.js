@@ -8,18 +8,32 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3002/allHoldings")
+  //     .then((res) => {
+  //       setAllHoldings(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    axios
-      .get("http://localhost:3002/allHoldings")
-      .then((res) => {
-        setAllHoldings(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
-  }, []);
+  axios
+    .get("https://zerodha-clone-1-nnml.onrender.com/allHoldings")
+    .then((res) => {
+      setAllHoldings(res.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.log(err);
+      setLoading(false);
+    });
+}, []);
+
 
   // Graph data
   const labels =

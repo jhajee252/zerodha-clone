@@ -22,9 +22,9 @@ const handleSubmit = async (e) => {
       alert(res.data.message || "Invalid credentials ❌");
     }
   } catch (err) {
-    console.log(err);
-    alert("Server error ❌");
-  }
+  console.log("ERROR:", err.response?.data || err.message);
+  alert("Server error ❌");
+}
 };
 
   return (

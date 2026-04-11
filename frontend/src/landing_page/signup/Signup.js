@@ -41,9 +41,9 @@ function Signup() {
       alert(res.data.message || "Signup failed ❌");
     }
   } catch (err) {
-    console.log(err);
-    alert("Server error ❌");
-  }
+  console.log("ERROR:", err.response?.data || err.message);
+  alert("Server error ❌");
+}
 };
 
  

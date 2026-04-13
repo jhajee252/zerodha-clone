@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
 const OrdersModel = require("./model/OrdersModel"); // 🔥 FIXED
-const UserModel = require("./model/UserModel");
+const UserModel = require("./model/userModel");
 
 const PORT = process.env.PORT || 3002;
 const MONGO_URI = process.env.MONGO_URL;
@@ -66,7 +66,15 @@ app.post("/login", async (req, res) => {
       return res.json({ success: false, message: "Wrong password" });
     }
 
-    res.json({ success: true, message: "Login successful" });
+    // ✅ TOKEN ADD KAR
+    const token = "mytoken123"; // 🔥 temporary (later JWT laga)
+
+    res.json({
+      success: true,
+      message: "Login successful",
+      token: token   // ✅ ye missing tha
+    });
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, message: "Server error" });

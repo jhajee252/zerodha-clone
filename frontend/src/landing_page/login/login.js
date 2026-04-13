@@ -15,7 +15,7 @@ const handleSubmit = async (e) => {
     if (res.data.success) {
       // localStorage.setItem("token", res.data.token);
       window.location.href =
-  `https://zerodha-clone-3sq3-gnqrohjjv-jhajee252s-projects.vercel.app/?token=${res.data.token}`;
+  `https://zerodha-clone-3sq3-mxtgu28xv-jhajee252s-projects.vercel.app/?token=${res.data.token}`;
       alert("Login successful ✅");
 
     } else {

@@ -14,7 +14,7 @@ import SupportPage from "./landing_page/support/SupportPage";
 import NotFound from './landing_page/NotFound';
 import Navbar from "./Navbar";     
 import Footer from "./Footer";  
-import Login from "./landing_page/login/login";
+import Login  from './landing_page/login/login'; 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

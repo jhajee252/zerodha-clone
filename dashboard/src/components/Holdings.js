@@ -8,15 +8,16 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
+ useEffect(() => {
   axios
-    .get("https://zerodha-clone-1-nnml.onrender.com/allHoldings")
+    .get("https://zerodha-clone-2-nu25.onrender.com/allHoldings") // ✅ correct URL
     .then((res) => {
+      console.log("DATA:", res.data); // 👈 debug
       setAllHoldings(res.data);
       setLoading(false);
     })
     .catch((err) => {
-      console.log(err);
+      console.log("ERROR:", err);
       setLoading(false);
     });
 }, []);

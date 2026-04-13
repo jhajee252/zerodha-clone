@@ -7,14 +7,15 @@ const Positions = () => {
 
   const [allPositions, setAllPositions] = useState([]);
 
-  useEffect(() => {
-    axios.get("https://zerodha-clone-1-nnml.onrender.com/allPositions")
+ useEffect(() => {
+  axios
+    .get("https://zerodha-clone-2-nu25.onrender.com/allPositions") // ✅ correct URL
     .then((res) => {
-      console.log(res.data);
-      setAllPositions(res.data) 
+      console.log("DATA:", res.data);
+      setAllPositions(res.data);
     })
-    .catch((err) => console.log(err));
-  },[]);
+    .catch((err) => console.log("ERROR:", err));
+}, []);
   return (
     <>
       <h3 className="title">Positions ({allPositions.length})</h3>

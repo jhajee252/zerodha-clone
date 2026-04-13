@@ -7,7 +7,7 @@ import "./index.css";
 import Home from "./components/Home";
 import Signup from "./landing_page/signup/Signup";
 import Login from "./landing_page/login/Login";
-import Dashboard from "./Dashboard";
+import Dashboard from "./components/Dashboard"; 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
